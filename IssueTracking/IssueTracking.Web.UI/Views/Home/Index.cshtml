@@ -1,0 +1,39 @@
+﻿@model IEnumerable<IssueDto>
+
+<table class="table">
+    <thead>
+
+    <th>@Html.DisplayName("Id")</th>
+    <th>@Html.DisplayName("Title")</th>
+    <th>@Html.DisplayName("Description")</th>
+    <th>@Html.DisplayName("Priority")</th>
+    <th>@Html.DisplayName("IssueType")</th>
+    <th>@Html.DisplayName("Created")</th>
+    <th>@Html.DisplayName("Completed")</th>
+
+    </thead>
+    <tbody>
+        @foreach (var issue in Model)
+        {
+            <tr>
+                <td>@TempData["Title"]</td>
+                <td>@issue.Id</td>
+                <td>@issue.Title</td>
+                <td>@issue.Description</td>
+                <td>@issue.Priority</td>
+                <td>@issue.IssueType</td>
+                <td>@issue.Created</td>
+                <td>@issue.Completed</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@issue.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@issue.Id">Details</a> | 
+                    <a asp-action="Delete" asp-route-id="@issue.Id">Delete</a>
+                </td>
+            </tr>
+        }
+        <tr>
+            <td>@Html.ActionLink("Refresh", "Index")</td>
+            <td>@Html.ActionLink("Create", "AddNew")</td>
+        </tr>
+    </tbody>
+</table>
